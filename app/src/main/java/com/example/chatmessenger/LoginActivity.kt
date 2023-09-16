@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
                         val user = auth.currentUser
                         Toast.makeText(this,"Auth Successful",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this,MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.

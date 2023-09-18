@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatmessenger.adapter.MessageAdapter
@@ -19,8 +20,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var mChatViewModel: ChatViewModel      // ViewMode -> Repo -> Dao -> Database
-
-    var MessagesList = ArrayList<MessageModel>()
     private lateinit var mLayoutManager : LinearLayoutManager
     private lateinit var adapter: MessageAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,32 +36,33 @@ class MainActivity : AppCompatActivity() {
         // Recycler View
         mLayoutManager = LinearLayoutManager(this)
         mLayoutManager.stackFromEnd = true
-        adapter = MessageAdapter(MessagesList)
+        adapter = MessageAdapter()
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = mLayoutManager
         // View Model Room DB
         mChatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
+        mChatViewModel.readAllChat.observe(this, Observer {chats->
+            adapter.setData(chats)
+        })
+        binding.recyclerview.smoothScrollToPosition(adapter.itemCount+2)
+        binding.recyclerview.smoothScrollToPosition(position())
         binding.sendbtn.setOnClickListener {
             val messageInputText = messageInputView.text.toString()
             if (messageInputView.text!!.isBlank()){
-//                return@setOnClickListener
-//                Toast.makeText(this,"Please Enter Text",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Please Enter Text",Toast.LENGTH_SHORT).show()
             }
             else {
                 var message = MessageModel(messageInputText, true,0)
-                MessagesList.add(message)
                 mChatViewModel.addMessage(message)       // View Model add message to db
-                adapter.notifyItemInserted(MessagesList.size - 1)
                 binding.recyclerview.recycledViewPool.clear()
-                binding.recyclerview.smoothScrollToPosition(MessagesList.size-1)
+//                binding.recyclerview.smoothScrollToPosition()
             messageInputView.setText(" ")
                 var replyText = messageInputText+" " + messageInputText
                 var reply = MessageModel(replyText,false,0)
-                MessagesList.add(reply)
                 mChatViewModel.addMessage(reply)    // View Model add reply to db
-                adapter.notifyItemInserted(MessagesList.size - 1)
+                Toast.makeText(this,"Position ${adapter.itemCount}",Toast.LENGTH_SHORT).show()
                 binding.recyclerview.recycledViewPool.clear()
-                binding.recyclerview.smoothScrollToPosition(MessagesList.size-1)
+                binding.recyclerview.smoothScrollToPosition(adapter.itemCount+2)
             }
         }
     }
@@ -73,6 +73,13 @@ class MainActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+    }
+    private fun position() : Int{
+        var pos =  adapter.itemCount
+        if(pos == 0|| pos == null){
+            return 0
+        }
+        return pos
     }
     private fun insertIntoData(){}
 }

@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.chatmessenger.R
 import com.example.chatmessenger.model.MessageModel
 
-class MessageAdapter(val list: ArrayList<MessageModel>): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+class MessageAdapter(): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+    private var list = emptyList<MessageModel>()
     inner class MessageViewHolder(view: View):ViewHolder(view){
         val messageText = view.findViewById<TextView>(R.id.show_message)
     }
@@ -33,5 +34,10 @@ class MessageAdapter(val list: ArrayList<MessageModel>): RecyclerView.Adapter<Me
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = list[position]
         holder.messageText.text = message.messageText
+    }
+    fun setData(chat: List<MessageModel>){
+        this.list = chat
+        notifyDataSetChanged()
+        notifyItemInserted(chat.size-1)
     }
 }

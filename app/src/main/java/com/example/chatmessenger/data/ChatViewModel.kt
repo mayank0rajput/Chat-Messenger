@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ChatViewModel(application: Application) : AndroidViewModel(application) {
-    private val readAllChat : LiveData<List<MessageModel>>
+    var readAllChat : LiveData<List<MessageModel>>
     private val repository : ChatRepository
 
     init {

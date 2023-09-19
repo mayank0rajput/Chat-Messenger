@@ -43,9 +43,8 @@ class MainActivity : AppCompatActivity() {
         mChatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
         mChatViewModel.readAllChat.observe(this, Observer {chats->
             adapter.setData(chats)
+            binding.recyclerview.smoothScrollToPosition(position())
         })
-        binding.recyclerview.smoothScrollToPosition(adapter.itemCount+2)
-        binding.recyclerview.smoothScrollToPosition(position())
         binding.sendbtn.setOnClickListener {
             val messageInputText = messageInputView.text.toString()
             if (messageInputView.text!!.isBlank()){
@@ -55,14 +54,12 @@ class MainActivity : AppCompatActivity() {
                 var message = MessageModel(messageInputText, true,0)
                 mChatViewModel.addMessage(message)       // View Model add message to db
                 binding.recyclerview.recycledViewPool.clear()
-//                binding.recyclerview.smoothScrollToPosition()
-            messageInputView.setText(" ")
+                messageInputView.setText("")
                 var replyText = messageInputText+" " + messageInputText
                 var reply = MessageModel(replyText,false,0)
                 mChatViewModel.addMessage(reply)    // View Model add reply to db
-                Toast.makeText(this,"Position ${adapter.itemCount}",Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this,"Position ${adapter.itemCount}",Toast.LENGTH_SHORT).show()
                 binding.recyclerview.recycledViewPool.clear()
-                binding.recyclerview.smoothScrollToPosition(adapter.itemCount+2)
             }
         }
     }
@@ -81,5 +78,4 @@ class MainActivity : AppCompatActivity() {
         }
         return pos
     }
-    private fun insertIntoData(){}
 }

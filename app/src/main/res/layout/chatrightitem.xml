@@ -27,7 +27,7 @@
             android:paddingRight="7dp"
             android:paddingBottom="10dp"
             android:text="Solve Your queries with smartbot"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold" />
 

@@ -45,6 +45,7 @@
         android:layout_marginBottom="20dp"
         android:layout_alignParentTop="true"
         android:hint="Type Message Here"
+        android:textColorHint="?attr/colorOnPrimaryContainer"
         android:inputType="text"
         android:background="@drawable/roundedshape"
         />

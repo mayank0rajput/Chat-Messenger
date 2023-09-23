@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatmessenger.adapter.MessageAdapter
 import com.example.chatmessenger.data.ChatViewModel
+import com.example.chatmessenger.data.ItemSpcaingDecoration
 import com.example.chatmessenger.databinding.ActivityMainBinding
 import com.example.chatmessenger.model.MessageModel
 import com.google.firebase.auth.FirebaseAuth
@@ -37,8 +38,12 @@ class MainActivity : AppCompatActivity() {
         mLayoutManager = LinearLayoutManager(this)
         mLayoutManager.stackFromEnd = true
         adapter = MessageAdapter()
+        // item spacing
+        val space = resources.getDimension(R.dimen.spacing)
+        val itemDecoration = ItemSpcaingDecoration(space)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = mLayoutManager
+        binding.recyclerview.addItemDecoration(itemDecoration)
         // View Model Room DB
         mChatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
         mChatViewModel.readAllChat.observe(this, Observer {chats->

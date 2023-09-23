@@ -1,9 +1,12 @@
 package com.example.chatmessenger.data
 
 import android.app.Application
+import android.graphics.Rect
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.chatmessenger.model.MessageModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,5 +25,14 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addMessage(chatMessage)
         }
+    }
+}
+class ItemSpcaingDecoration(private val spacing: Float): RecyclerView.ItemDecoration(){
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+//        outRect.left = spacing
+//        outRect.right = spacing
+//        outRect.top = spacing
+//        outRect.bottom = spacing
+        outRect.top = spacing.toInt()
     }
 }

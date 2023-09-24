@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.d("Hare Krishna", "signInWithEmail:success")
                         val user = auth.currentUser
                         Toast.makeText(this,"Auth Successful",Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this,MainActivity::class.java)
+                        val intent = Intent(this,HomeScreen::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                     } else {

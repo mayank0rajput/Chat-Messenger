@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
         var auth = Firebase.auth
-        verifyUserIsLogged()
         val user = auth.currentUser
         binding.usernametextview.text = user?.email.toString()
 
@@ -68,14 +67,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun verifyUserIsLogged(){
-        val uid = FirebaseAuth.getInstance().uid
-        if(uid==null){
-            val intent = Intent(this,LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-        }
-    }
+
     private fun position() : Int{
         var pos =  adapter.itemCount
         if(pos == 0|| pos == null){

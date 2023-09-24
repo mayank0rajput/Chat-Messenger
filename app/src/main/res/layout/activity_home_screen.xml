@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeScreen">
+    <TextView
+        android:id="@+id/titleviewhomescreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="AI Assistants"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        android:fontFamily="@font/montserratsemibold"/>
+
+    <GridLayout
+        android:id="@+id/gridlayouthomescreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        android:paddingVertical="25dp"
+        android:rowCount="4"
+        android:columnCount="2"
+        android:layout_below="@+id/titleviewhomescreen"
+        android:visibility="visible">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardcs"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:visibility="visible"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="7dp"
+            app:cardElevation="12dp"
+            app:cardCornerRadius="15dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:layout_column="0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/cardimage1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="left"
+                    android:src="@drawable/matemathic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Computer Science"
+                    android:layout_margin="5dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserratregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Coding and CS problem solving companion."
+                    android:fontFamily="@font/montserratregular"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardenglish"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:visibility="visible"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="7dp"
+            app:cardElevation="12dp"
+            app:cardCornerRadius="15dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:layout_column="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <ImageView
+                    android:id="@+id/cardimage2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/matemathic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserratsemibold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Language and Litreture assistant"
+                    android:fontFamily="@font/montserratregular"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardphysics"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:visibility="visible"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="7dp"
+            app:cardElevation="12dp"
+            app:cardCornerRadius="15dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <ImageView
+                    android:id="@+id/cardimage3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/matemathic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Physics"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserratsemibold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="To help you about constituents of universe."
+                    android:fontFamily="@font/montserratregular"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardmaths"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:visibility="visible"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="7dp"
+            app:cardElevation="12dp"
+            app:cardCornerRadius="15dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <ImageView
+                    android:id="@+id/cardimage4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="left"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/matemathic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mathematics"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserratsemibold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Counting and calculate for you."
+                    android:fontFamily="@font/montserratregular"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>
+
+</RelativeLayout>

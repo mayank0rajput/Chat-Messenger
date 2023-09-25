@@ -17,27 +17,34 @@
         android:textAlignment="center"
         android:textSize="35sp"
         android:fontFamily="@font/montserratsemibold"/>
-
-    <GridLayout
-        android:id="@+id/gridlayouthomescreen"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        android:paddingVertical="25dp"
-        android:rowCount="4"
-        android:columnCount="2"
-        android:layout_below="@+id/titleviewhomescreen"
-        android:visibility="visible">
+        android:layout_below="@+id/titleviewhomescreen">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <GridLayout
+            android:id="@+id/gridlayouthomescreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:paddingVertical="25dp"
+            android:paddingHorizontal="20dp"
+            android:rowCount="4"
+            android:columnCount="2">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardcs"
-            android:layout_width="160dp"
+            android:layout_width="165dp"
             android:layout_height="180dp"
             android:visibility="visible"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="7dp"
+            android:layout_marginHorizontal="10dp"
             app:cardElevation="12dp"
             app:cardCornerRadius="15dp"
             android:layout_rowWeight="1"
@@ -48,8 +55,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="visible">
+                android:orientation="vertical">
                 <ImageView
                     android:layout_margin="5dp"
                     android:id="@+id/cardimage1"
@@ -78,11 +84,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardenglish"
-            android:layout_width="160dp"
+            android:layout_width="165dp"
             android:layout_height="180dp"
             android:visibility="visible"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="7dp"
+            android:layout_marginHorizontal="10dp"
             app:cardElevation="12dp"
             app:cardCornerRadius="15dp"
             android:layout_rowWeight="1"
@@ -123,11 +129,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardphysics"
-            android:layout_width="160dp"
+            android:layout_width="165dp"
             android:layout_height="180dp"
             android:visibility="visible"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="7dp"
+            android:layout_marginHorizontal="10dp"
             app:cardElevation="12dp"
             app:cardCornerRadius="15dp"
             android:layout_rowWeight="1"
@@ -166,11 +172,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardmaths"
-            android:layout_width="160dp"
+            android:layout_width="165dp"
             android:layout_height="180dp"
             android:visibility="visible"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="7dp"
+            android:layout_marginHorizontal="10dp"
             app:cardElevation="12dp"
             app:cardCornerRadius="15dp"
             android:layout_rowWeight="1"
@@ -181,6 +187,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:visibility="visible">
+
                 <ImageView
                     android:id="@+id/cardimage4"
                     android:layout_width="60dp"
@@ -188,25 +195,27 @@
                     android:layout_gravity="left"
                     android:layout_margin="5dp"
                     android:src="@drawable/matemathic" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mathematics"
-                    android:layout_margin="5dp"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserratsemibold" />
+                    android:layout_margin="5dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
                     android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/montserratregular"
                     android:text="Counting and calculate for you."
-                    android:fontFamily="@font/montserratregular"/>
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
-
+        </HorizontalScrollView>
+    </ScrollView>
 </RelativeLayout>

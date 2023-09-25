@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.apitest.ApiClient
 import com.example.chatmessenger.adapter.MessageAdapter
 import com.example.chatmessenger.data.ChatViewModel
 import com.example.chatmessenger.data.ItemSpcaingDecoration
@@ -16,10 +18,13 @@ import com.example.chatmessenger.model.MessageModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private lateinit var auth: FirebaseAuth
+
     private lateinit var mChatViewModel: ChatViewModel      // ViewMode -> Repo -> Dao -> Database
     private lateinit var mLayoutManager : LinearLayoutManager
     private lateinit var adapter: MessageAdapter
@@ -57,13 +62,17 @@ class MainActivity : AppCompatActivity() {
             else {
                 var message = MessageModel(messageInputText, true,0)
                 mChatViewModel.addMessage(message)       // View Model add message to db
+//                var msgid = mChatViewModel.getid(message)
                 binding.recyclerview.recycledViewPool.clear()
                 messageInputView.setText("")
-                var replyText = messageInputText+" " + messageInputText
-                var reply = MessageModel(replyText,false,0)
-                mChatViewModel.addMessage(reply)    // View Model add reply to db
-              //  Toast.makeText(this,"Position ${adapter.itemCount}",Toast.LENGTH_SHORT).show()
-                binding.recyclerview.recycledViewPool.clear()
+                val apiClient =ApiClient()
+                val conversationId = "Volej0qEBbjN"
+                val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
+                lifecycleScope.launch(Dispatchers.IO) {
+                    var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
+                    mChatViewModel.addMessage(MessageModel(response,false,0))    // View Model add reply to db
+                    binding.recyclerview.recycledViewPool.clear()
+                }
             }
         }
     }
@@ -74,5 +83,15 @@ class MainActivity : AppCompatActivity() {
             return 0
         }
         return pos
+    }
+    private fun botmsg(prompt: String): String{
+        val apiClient =ApiClient()
+        var response = "typing..."
+        val conversationId = "Volej0qEBbjN"
+        val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
+        lifecycleScope.launch(Dispatchers.IO) {
+            response = apiClient.generateMessage(prompt, conversationId, accessToken)
+        }
+        return response
     }
 }

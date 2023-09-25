@@ -26,6 +26,14 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
             repository.addMessage(chatMessage)
         }
     }
+    fun updateMessage(chatMessage : MessageModel){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateMessage(chatMessage)
+        }
+    }
+    fun getid(message: String):Int{
+        return repository.getid(message)
+    }
 }
 class ItemSpcaingDecoration(private val spacing: Float): RecyclerView.ItemDecoration(){
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {

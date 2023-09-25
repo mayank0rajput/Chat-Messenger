@@ -9,4 +9,11 @@ class ChatRepository(private val chatDao: ChatDao) {
     suspend fun addMessage(chatMessage : MessageModel){
         chatDao.addMessage(chatMessage)
     }
+    suspend fun updateMessage(chatMessage : MessageModel){
+        chatDao.update(chatMessage)
+    }
+    fun getid(message: String) : Int {
+      val id = chatDao.getid(message)
+      return id
+    }
 }

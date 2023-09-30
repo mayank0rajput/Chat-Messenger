@@ -34,12 +34,12 @@ class HomeScreen : AppCompatActivity() {
         }
     }
     private fun openMathsChat(){
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,MathematicsChatBot::class.java)
         Toast.makeText(this,"Opening Mathematics Chat-Bot",Toast.LENGTH_SHORT).show()
         startActivity(intent)
     }
     private fun openEnglishChat(){
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,EnglishChatBot::class.java)
         Toast.makeText(this,"Opening English Chat-Bot",Toast.LENGTH_SHORT).show()
         startActivity(intent)
     }
@@ -49,7 +49,7 @@ class HomeScreen : AppCompatActivity() {
         startActivity(intent)
     }
     private fun openPhysicsChat(){
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,PhysicsChatBot::class.java)
         Toast.makeText(this,"Opening Physics Chat-Bot",Toast.LENGTH_SHORT).show()
         startActivity(intent)
     }

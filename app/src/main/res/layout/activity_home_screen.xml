@@ -31,10 +31,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="0dp"
             android:paddingVertical="25dp"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="15dp"
             android:rowCount="4"
             android:columnCount="2">
 

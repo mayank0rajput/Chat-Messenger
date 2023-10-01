@@ -17,7 +17,20 @@
         android:textAlignment="center"
         android:textSize="35sp"
         android:fontFamily="@font/montserratsemibold"/>
+
+    <ImageButton
+        android:id="@+id/logout"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/scrollview"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="?android:attr/colorBackground"
+        android:src="@drawable/reshot_icon_user_logout_hran56df7j" />
+
     <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleviewhomescreen">
@@ -62,7 +75,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="left"
-                    android:src="@drawable/matemathic" />
+                    android:src="@drawable/cs" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,7 +120,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="left"
                     android:layout_margin="5dp"
-                    android:src="@drawable/matemathic" />
+                    android:src="@drawable/english" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -115,7 +128,7 @@
                     android:layout_margin="5dp"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserratsemibold" />
+                    android:fontFamily="@font/montserratregular" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -150,7 +163,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="left"
                     android:layout_margin="5dp"
-                    android:src="@drawable/matemathic" />
+                    android:src="@drawable/physics" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -158,7 +171,7 @@
                     android:layout_margin="5dp"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserratsemibold" />
+                    android:fontFamily="@font/montserratregular" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -194,7 +207,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="left"
                     android:layout_margin="5dp"
-                    android:src="@drawable/matemathic" />
+                    android:src="@drawable/maths" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,6 +215,7 @@
                     android:text="Mathematics"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/montserratregular"
                     android:layout_margin="5dp"/>
 
                 <TextView
@@ -209,10 +223,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/montserratregular"
-                    android:text="Counting and calculate for you."
+                    android:text="Counting and calculating for you."
                     android:textSize="12sp" />
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
     </GridLayout>

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apitest.ApiClient
+import com.example.chatmessenger.adapter.MathematicsAdapter
 import com.example.chatmessenger.adapter.MessageAdapter
 import com.example.chatmessenger.data.ChatViewModel
 import com.example.chatmessenger.data.ItemSpcaingDecoration
@@ -24,7 +25,7 @@ class MathematicsChatBot : AppCompatActivity() {
     private lateinit var binding : ActivityMathematicsChatBotBinding
     private lateinit var mChatViewModel: ChatViewModel      // ViewMode -> Repo -> Dao -> Database
     private lateinit var mLayoutManager : LinearLayoutManager
-    private lateinit var adapter: MessageAdapter
+    private lateinit var adapter: MathematicsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMathematicsChatBotBinding.inflate(LayoutInflater.from(this))
@@ -39,7 +40,7 @@ class MathematicsChatBot : AppCompatActivity() {
         // Recycler View
         mLayoutManager = LinearLayoutManager(this)
         mLayoutManager.stackFromEnd = true
-        adapter = MessageAdapter()
+        adapter = MathematicsAdapter()
         // item spacing
         val space = resources.getDimension(R.dimen.spacing)
         val itemDecoration = ItemSpcaingDecoration(space)
@@ -48,7 +49,7 @@ class MathematicsChatBot : AppCompatActivity() {
         binding.recyclerview.addItemDecoration(itemDecoration)
         // View Model Room DB
         mChatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
-        mChatViewModel.readAllChat.observe(this, Observer {chats->
+        mChatViewModel.readAllMathematicsChat.observe(this, Observer {chats->
             adapter.setData(chats)
             binding.recyclerview.smoothScrollToPosition(position())
         })
@@ -65,8 +66,8 @@ class MathematicsChatBot : AppCompatActivity() {
                 messageInputView.setText("")
                 binding.status.visibility = View.VISIBLE
                 val apiClient = ApiClient()
-                val conversationId = "Volej0qEBbjN"
-                val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
+                val conversationId = ""
+                val accessToken = ""
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
                     mChatViewModel.addMathematicsMessage(MathematicsMessageModel(response,false,0))    // View Model add reply to db

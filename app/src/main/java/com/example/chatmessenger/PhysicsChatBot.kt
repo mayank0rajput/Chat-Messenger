@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apitest.ApiClient
 import com.example.chatmessenger.adapter.MessageAdapter
+import com.example.chatmessenger.adapter.PhysicsAdapter
 import com.example.chatmessenger.data.ChatViewModel
 import com.example.chatmessenger.data.ItemSpcaingDecoration
 import com.example.chatmessenger.databinding.ActivityPhysicsChatBotBinding
@@ -24,7 +25,7 @@ class PhysicsChatBot : AppCompatActivity() {
     private lateinit var binding : ActivityPhysicsChatBotBinding
     private lateinit var mChatViewModel: ChatViewModel      // ViewMode -> Repo -> Dao -> Database
     private lateinit var mLayoutManager : LinearLayoutManager
-    private lateinit var adapter: MessageAdapter
+    private lateinit var adapter: PhysicsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPhysicsChatBotBinding.inflate(LayoutInflater.from(this))
@@ -39,7 +40,7 @@ class PhysicsChatBot : AppCompatActivity() {
         // Recycler View
         mLayoutManager = LinearLayoutManager(this)
         mLayoutManager.stackFromEnd = true
-        adapter = MessageAdapter()
+        adapter = PhysicsAdapter()
         // item spacing
         val space = resources.getDimension(R.dimen.spacing)
         val itemDecoration = ItemSpcaingDecoration(space)
@@ -48,7 +49,7 @@ class PhysicsChatBot : AppCompatActivity() {
         binding.recyclerview.addItemDecoration(itemDecoration)
         // View Model Room DB
         mChatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
-        mChatViewModel.readAllChat.observe(this, Observer {chats->
+        mChatViewModel.readAllPhysicsChat.observe(this, Observer {chats->
             adapter.setData(chats)
             binding.recyclerview.smoothScrollToPosition(position())
         })
@@ -65,8 +66,8 @@ class PhysicsChatBot : AppCompatActivity() {
                 messageInputView.setText("")
                 binding.status.visibility = View.VISIBLE
                 val apiClient = ApiClient()
-                val conversationId = "Volej0qEBbjN"
-                val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
+                val conversationId = "mWZdPzKjwaKg"
+                val accessToken = "tXAClhNSlq6hb7ZwtXqJSvFFbnyuPVNdkvJfQ1tk"
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
                     mChatViewModel.addPhysicsMessage(PhysicsMessageModel(response,false,0))    // View Model add reply to db

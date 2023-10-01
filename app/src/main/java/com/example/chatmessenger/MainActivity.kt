@@ -69,8 +69,8 @@ class MainActivity : AppCompatActivity() {
                 messageInputView.setText("")
                 binding.status.visibility = View.VISIBLE
                 val apiClient =ApiClient()
-                val conversationId = "Volej0qEBbjN"
-                val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
+                val conversationId = "yJrb27qZKdWL"
+                val accessToken = "yuikAVpApyrwiFYzqomq8ftPv3i4uq9ShrkQ0pOS"
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
                     mChatViewModel.addMessage(MessageModel(response,false,0))    // View Model add reply to db

@@ -32,6 +32,10 @@ class HomeScreen : AppCompatActivity() {
         cardPhysics.setOnClickListener {
             openPhysicsChat()
         }
+        binding.logout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            verifyUserIsLogged()
+        }
     }
     private fun openMathsChat(){
         val intent = Intent(this,MathematicsChatBot::class.java)

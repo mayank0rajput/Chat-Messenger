@@ -3,8 +3,10 @@ package com.example.chatmessenger
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 //                var msgid = mChatViewModel.getid(message)
                 binding.recyclerview.recycledViewPool.clear()
                 messageInputView.setText("")
+                binding.status.visibility = View.VISIBLE
                 val apiClient =ApiClient()
                 val conversationId = "Volej0qEBbjN"
                 val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
@@ -72,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
                     mChatViewModel.addMessage(MessageModel(response,false,0))    // View Model add reply to db
                     binding.recyclerview.recycledViewPool.clear()
+                    binding.status.visibility = View.INVISIBLE
                 }
             }
         }

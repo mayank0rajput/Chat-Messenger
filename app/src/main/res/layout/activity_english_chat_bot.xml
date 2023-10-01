@@ -30,7 +30,20 @@
         android:fontFamily="@font/montserratsemibold"
         android:textColor="?attr/colorOnBackground"
         />
-
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="is thinking..."
+        android:textSize="14sp"
+        android:visibility="invisible"
+        android:textColor="?attr/colorOnTertiaryContainer"
+        android:fontFamily="@font/montserratsemibolditalic"
+        app:layout_constraintBottom_toBottomOf="@id/usernametextview"
+        app:layout_constraintRight_toRightOf="@id/usernametextview"
+        android:layout_marginBottom="-12dp"
+        android:layout_marginEnd="0dp"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"

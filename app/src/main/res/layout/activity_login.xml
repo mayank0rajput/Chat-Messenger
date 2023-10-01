@@ -8,17 +8,14 @@
 
     <ImageView
         android:layout_width="350dp"
-        android:layout_height="100dp"
+        android:layout_height="135dp"
         android:scaleType="centerCrop"
-        android:scaleY="1"
-        android:scaleX="1.2"
         android:id="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="100dp"
         android:src="@drawable/loginactivitylogo"
-        android:background="@color/md_theme_dark_background"
         />
     <TextView
         android:id="@+id/textViewLogin"

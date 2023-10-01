@@ -66,8 +66,8 @@ class MathematicsChatBot : AppCompatActivity() {
                 messageInputView.setText("")
                 binding.status.visibility = View.VISIBLE
                 val apiClient = ApiClient()
-                val conversationId = ""
-                val accessToken = ""
+                val conversationId = "MVyb8MgEgdvA"
+                val accessToken = "EElhoBuRzemxpLAaUBcfURvbMvi04z9LdVNiQQJD"
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
                     mChatViewModel.addMathematicsMessage(MathematicsMessageModel(response,false,0))    // View Model add reply to db

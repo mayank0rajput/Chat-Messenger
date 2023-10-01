@@ -14,6 +14,7 @@ import com.example.chatmessenger.adapter.MessageAdapter
 import com.example.chatmessenger.data.ChatViewModel
 import com.example.chatmessenger.data.ItemSpcaingDecoration
 import com.example.chatmessenger.databinding.ActivityMathematicsChatBotBinding
+import com.example.chatmessenger.model.MathematicsMessageModel
 import com.example.chatmessenger.model.MessageModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -56,8 +57,8 @@ class MathematicsChatBot : AppCompatActivity() {
                 Toast.makeText(this,"Please Enter Text", Toast.LENGTH_SHORT).show()
             }
             else {
-                var message = MessageModel(messageInputText, true,0)
-                mChatViewModel.addMessage(message)       // View Model add message to db
+                var message = MathematicsMessageModel(messageInputText, true,0)
+                mChatViewModel.addMathematicsMessage(message)       // View Model add message to db
 //                var msgid = mChatViewModel.getid(message)
                 binding.recyclerview.recycledViewPool.clear()
                 messageInputView.setText("")
@@ -66,7 +67,7 @@ class MathematicsChatBot : AppCompatActivity() {
                 val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
-                    mChatViewModel.addMessage(MessageModel(response,false,0))    // View Model add reply to db
+                    mChatViewModel.addMathematicsMessage(MathematicsMessageModel(response,false,0))    // View Model add reply to db
                     binding.recyclerview.recycledViewPool.clear()
                 }
             }

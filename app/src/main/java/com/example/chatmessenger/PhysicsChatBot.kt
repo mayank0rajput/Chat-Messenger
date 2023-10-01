@@ -15,6 +15,7 @@ import com.example.chatmessenger.data.ChatViewModel
 import com.example.chatmessenger.data.ItemSpcaingDecoration
 import com.example.chatmessenger.databinding.ActivityPhysicsChatBotBinding
 import com.example.chatmessenger.model.MessageModel
+import com.example.chatmessenger.model.PhysicsMessageModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -56,8 +57,8 @@ class PhysicsChatBot : AppCompatActivity() {
                 Toast.makeText(this,"Please Enter Text", Toast.LENGTH_SHORT).show()
             }
             else {
-                var message = MessageModel(messageInputText, true,0)
-                mChatViewModel.addMessage(message)       // View Model add message to db
+                var message = PhysicsMessageModel(messageInputText, true,0)
+                mChatViewModel.addPhysicsMessage(message)       // View Model add message to db
 //                var msgid = mChatViewModel.getid(message)
                 binding.recyclerview.recycledViewPool.clear()
                 messageInputView.setText("")
@@ -66,7 +67,7 @@ class PhysicsChatBot : AppCompatActivity() {
                 val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
-                    mChatViewModel.addMessage(MessageModel(response,false,0))    // View Model add reply to db
+                    mChatViewModel.addPhysicsMessage(PhysicsMessageModel(response,false,0))    // View Model add reply to db
                     binding.recyclerview.recycledViewPool.clear()
                 }
             }

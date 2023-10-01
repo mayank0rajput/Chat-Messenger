@@ -14,6 +14,7 @@ import com.example.chatmessenger.adapter.MessageAdapter
 import com.example.chatmessenger.data.ChatViewModel
 import com.example.chatmessenger.data.ItemSpcaingDecoration
 import com.example.chatmessenger.databinding.ActivityEnglishChatBotBinding
+import com.example.chatmessenger.model.EnglishMessageModel
 import com.example.chatmessenger.model.MessageModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,8 +56,8 @@ class EnglishChatBot : AppCompatActivity() {
                 Toast.makeText(this,"Please Enter Text", Toast.LENGTH_SHORT).show()
             }
             else {
-                var message = MessageModel(messageInputText, true,0)
-                mChatViewModel.addMessage(message)       // View Model add message to db
+                var message = EnglishMessageModel(messageInputText, true,0)
+                mChatViewModel.addEnglishMessage(message)       // View Model add message to db
 //                var msgid = mChatViewModel.getid(message)
                 binding.recyclerview.recycledViewPool.clear()
                 messageInputView.setText("")
@@ -65,7 +66,7 @@ class EnglishChatBot : AppCompatActivity() {
                 val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
                 lifecycleScope.launch(Dispatchers.IO) {
                     var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
-                    mChatViewModel.addMessage(MessageModel(response,false,0))    // View Model add reply to db
+                    mChatViewModel.addEnglishMessage(EnglishMessageModel(response,false,0))    // View Model add reply to db
                     binding.recyclerview.recycledViewPool.clear()
                 }
             }

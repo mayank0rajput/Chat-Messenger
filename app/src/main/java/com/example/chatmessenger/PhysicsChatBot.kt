@@ -32,8 +32,7 @@ class PhysicsChatBot : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.backbutton.setOnClickListener {
-            val intent = Intent(this,HomeScreen::class.java)
-            startActivity(intent)
+            finish()
         }
         val messageInputView = binding.message
 

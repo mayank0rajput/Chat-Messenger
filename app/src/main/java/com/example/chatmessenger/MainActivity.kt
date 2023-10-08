@@ -35,8 +35,7 @@ class MainActivity : AppCompatActivity() {
 //        binding.usernametextview.text = user?.email.toString()
 
         binding.backbutton.setOnClickListener{
-            val intent = Intent(this,HomeScreen::class.java)
-            startActivity(intent)
+            finish()
         }
         val messageInputView = binding.message
 

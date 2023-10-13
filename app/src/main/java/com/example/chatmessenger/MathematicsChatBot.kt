@@ -18,6 +18,7 @@ import com.example.chatmessenger.data.ItemSpcaingDecoration
 import com.example.chatmessenger.databinding.ActivityMathematicsChatBotBinding
 import com.example.chatmessenger.model.MathematicsMessageModel
 import com.example.chatmessenger.model.MessageModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -67,11 +68,18 @@ class MathematicsChatBot : AppCompatActivity() {
                 val apiClient = ApiClient()
                 val conversationId = "MVyb8MgEgdvA"
                 val accessToken = "EElhoBuRzemxpLAaUBcfURvbMvi04z9LdVNiQQJD"
-                lifecycleScope.launch(Dispatchers.IO) {
-                    var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
-                    mChatViewModel.addMathematicsMessage(MathematicsMessageModel(response,false,0))    // View Model add reply to db
-                    binding.recyclerview.recycledViewPool.clear()
-                    binding.status.visibility = View.INVISIBLE
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        var response = apiClient.generateMessage(messageInputText, conversationId, accessToken)
+                        mChatViewModel.addMathematicsMessage(MathematicsMessageModel(response,false,0))
+                    } catch (e: Exception){
+                        mChatViewModel.addMathematicsMessage(MathematicsMessageModel("Whoops! It seems our digital carrier pigeons are on a coffee break ☕. Please check your internet connection and try again in a few sips!\n" +
+                                "Error : ${e.message}",false,0))
+                    } finally {
+                        // View Model add reply to db
+                        binding.recyclerview.recycledViewPool.clear()
+                        binding.status.visibility = View.INVISIBLE
+                    }
                 }
             }
         }

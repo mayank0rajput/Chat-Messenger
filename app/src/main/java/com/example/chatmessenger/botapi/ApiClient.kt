@@ -5,14 +5,21 @@ import retrofit2.Call
 import retrofit2.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
 
 class ApiClient {
     private val baseUrl = "https://getcody.ai/api/"
     private val retrofit: Retrofit
 
     init {
+        val okHttpClient = OkHttpClient.Builder()
+            .connectTimeout(150, java.util.concurrent.TimeUnit.SECONDS) // Set your desired connection timeout
+            .readTimeout(150, java.util.concurrent.TimeUnit.SECONDS)    // Set your desired read timeout
+            .writeTimeout(150, java.util.concurrent.TimeUnit.SECONDS)   // Set your desired write timeout
+            .build()
         retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

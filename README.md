@@ -2,7 +2,7 @@
 An AI Chat Bot which is trained on limited data to assist you in different fields of study.
 
 ## Demo
-
+https://appetize.io/app/nx24cwoazqpekor3zvsmfmccqe?device=pixel7&osVersion=13.0
 
 ## Local Build
 

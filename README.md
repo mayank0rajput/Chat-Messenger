@@ -2,8 +2,7 @@
 An AI Chat Bot which is trained on limited data to assist you in different fields of study.
 
 ## Demo
-![image](https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/ecf04484-a837-44c0-80d8-23ba6d688eca) ![image](https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/e6c70353-091d-48f4-9afb-8333b5c7f0b8)
-![WhatsApp Image 2023-10-02 at 12 50 36 PM](https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/1394847f-0094-4e8e-ac1a-1d43b328dbd1)
+
 
 ## Local Build
 
@@ -15,6 +14,8 @@ An AI Chat Bot which is trained on limited data to assist you in different field
 7. Build and Run
 ## Testing
 Note: This app will only run on Android Devices with minimum SDK : 24.
+
+<img src="https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/1cdeb9cd-a32d-49fd-8c6b-4a1694ba5893" width="200" /> <img src="https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/caad730d-520b-4aa4-b1a6-0683d5e5bb45" width="200" /> <img src="https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/6d8084b6-d08a-49e2-b08a-e6c1d582c793" width="200" /> <img src="https://github.com/mayank0rajput/Chat-Messenger/assets/57263353/e778afa5-cb06-4f4c-a188-9c5802b11aae" width="200" />
 
 To run this app simply go to ```/APK File/app.apk``` and install it.  
 [Credentials : batman@email.com    abc123] 
